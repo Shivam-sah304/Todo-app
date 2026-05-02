@@ -1,6 +1,7 @@
 from flask import Flask,render_template,request,redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+import os
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = r"sqlite:///C:\Users\dell\OneDrive\Desktop\Projects\New Project\Todo.db"
@@ -65,5 +66,6 @@ with app.app_context():
 
 #run this app
 if __name__=="__main__":
-    app.run(debug=True,port=7000)#chahnging port is not necessary its your choice
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)#chahnging port is not necessary its your choice
  
